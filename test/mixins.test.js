@@ -127,8 +127,7 @@ describe('Model class', function() {
     var memory = new DataSource('mem', { connector: Memory }, modelBuilder);
     var Item = memory.createModel('Item', { name: 'string' }, {
       mixins: {
-        TimeStamp: true,
-        Demo: { value: true },
+        TimeStamp: true, Demo: { value: true },
         Multi: [
           { key: 'foo', value: 'bar' },
           { key: 'fox', value: 'baz' },
