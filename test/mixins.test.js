@@ -82,7 +82,6 @@ describe('Model class', function() {
   it('should fail to apply an undefined mixin class', function(done) {
     var memory = new DataSource('mem', { connector: Memory }, modelBuilder);
     function applyMixin() {
-      var UndefinedMixin;
       memory.createModel('Item', { name: 'string' }, {
         mixins: { UndefinedMixin: true },
       });
@@ -125,15 +124,7 @@ describe('Model class', function() {
 
   it('should fail to apply undefined mixin', function(done) {
     var memory = new DataSource('mem', { connector: Memory }, modelBuilder);
-    var Item = memory.createModel('Item', { name: 'string' }, {
-      mixins: {
-        TimeStamp: true, Demo: { value: true },
-        Multi: [
-          { key: 'foo', value: 'bar' },
-          { key: 'fox', value: 'baz' },
-        ],
-      },
-    });
+    var Item = memory.createModel('Item', { name: 'string' });
 
     function applyMixin() {
       Item.mixin('UndefinedMixin', { foo: 'bar' });
