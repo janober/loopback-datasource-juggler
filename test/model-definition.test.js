@@ -378,7 +378,7 @@ describe('ModelDefinition class', function() {
   it('should throw error for property names containing dot', function() {
     (function() { memory.createModel('Dotted', { 'dot.name': String }); })
       .should
-      .throw(/(dot\(s\)).*Dotted.*dot\.name/);
+      .throw(/dot\(s\).*Dotted.*dot\.name/);
   });
 
   it('should report deprecation warning for property named constructor', function() {
@@ -395,7 +395,7 @@ describe('ModelDefinition class', function() {
       var Model = memory.createModel('DynamicDotted');
       Model.create({ 'dot.name': 'dot.value' }, function(err) {
         err.should.be.instanceOf(Error);
-        err.message.should.match(/(dot\(s\)).*DynamicDotted.*dot\.name/);
+        err.message.should.match(/dot\(s\).*DynamicDotted.*dot\.name/);
         done();
       });
     });
